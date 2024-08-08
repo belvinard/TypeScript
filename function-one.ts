@@ -1,27 +1,30 @@
 // Declaratioin of functions
 
-function intro(name: string, age: number, country?: string): string {
-    if(country){
-        return `My name is ${name} and my age is ${age} I live in ${country}`;
-    }
+enum AgeUnit{
+    years = "years",
+    months = "months",
 }
 
-// const result = intro("John", 22);
-const result = intro("John", 22, "Cameroon");
+type Person = {
+    name: string;
+    age: number; 
+    ageUnit: AgeUnit;
+    country: string;
+};
 
-document.addEventListener("DOMContentLoaded", () => {
-    const resultDiv = document.getElementById('result');
-    if (resultDiv) {
-        resultDiv.innerText = result;
-    }
-});
+const person: Person = {
+    name: "Peter",
+    age: 30.5,
+    ageUnit: AgeUnit.years,
+    country: "USA",
+};
 
+function convertAgeToMonth (person : Person):Person{
+    person.age = person.age * 12;
+    person.ageUnit = AgeUnit.months;
 
+    return person;
 
-/*const intro2 = function intro(name:string, age: number): string{
-    return `My name is ${name} and my age is ${age}`;
-} ;
+}
 
-const intro3 = (name:string, age: number):string => {
-    return `My name is ${name} and my age is ${age}`;
-};*/
+console.log(convertAgeToMonth(person));
