@@ -9,10 +9,13 @@ var person = {
     age: 30.5,
     ageUnit: AgeUnit.years,
     country: "USA",
+    greet: function (greeting) {
+        return "".concat(greeting, " ").concat(person.name);
+    }
 };
 function convertAgeToMonth(person) {
     person.age = person.age * 12;
     person.ageUnit = AgeUnit.months;
     return person;
 }
-console.log(convertAgeToMonth(person));
+console.log(person.greet("Good Morning")); // Corrected function call
