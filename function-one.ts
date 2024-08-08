@@ -1,34 +1,16 @@
-// Declaratioin of functions
-
-enum AgeUnit {
-    years = "years",
-    months = "months",
-}
-
-type greetingFunction = (greeting: string) => string;
-
-type Person = {
-    name: string;
-    age: number; 
-    ageUnit: AgeUnit;
-    country: string;
-    greet: greetingFunction;
+type Reservation = {
+    departureDate: Date;
+    rerturnDate: Date;
+    departingFrom: string;
+    destination: string;
 };
 
-const person: Person = {
-    name: "Peter",
-    age: 30.5,
-    ageUnit: AgeUnit.years,
-    country: "USA",
-    greet: (greeting: string) => {
-        return `${greeting} ${person.name}`;
-    }
-};
 
-function convertAgeToMonth(person: Person): Person {
-    person.age = person.age * 12;
-    person.ageUnit = AgeUnit.months;
-    return person;
+type Reserve = {
+    (
+        departureDate: Date,
+        rerturnDate: Date,
+        departingFrom: string,
+        destination: string
+    ) : Reservation;
 }
-
-console.log(person.greet("Good Morning")); // Corrected function call
